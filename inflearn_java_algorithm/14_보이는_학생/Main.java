@@ -4,23 +4,24 @@ import java.util.Scanner;
 
 /*
 input
-10
+8
+130 135 148 140 145 150 150 153
 
 output
-1 1 2 3 5 8 13 21 34 55
+5
  */
 
 public class Main {
-    public List<Integer> solution(int n) {
-        List<Integer> answer = new ArrayList<>();
+    public int solution(int[] arr, int n) {
+        int answer = 0;
+        int max = Integer.MIN_VALUE;
         
-        answer.add(1);
-        answer.add(1);
-
-        for (int i = 2; i < n; i++) {
-            answer.add(answer.get(i-2) + answer.get(i-1));
+        for (int i = 0; i < n; i++) {
+            if (max < arr[i]) {
+                answer++;
+                max = arr[i];
+            }
         }
-
 
        return answer;
     }
@@ -29,10 +30,12 @@ public class Main {
         Main T = new Main();
         Scanner in=new Scanner(System.in);
         int n = in.nextInt();
-       
-        for (int x : T.solution(n)) {
-            System.out.print(x + " ");
+        int arr[] = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = in.nextInt();
         }
+
+        System.out.println(T.solution(arr, n));
 
         return ;
     }

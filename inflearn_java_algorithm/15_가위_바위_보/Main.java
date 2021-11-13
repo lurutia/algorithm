@@ -1,27 +1,39 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /*
 input
-8
-130 135 148 140 145 150 150 153
+10
 
 output
-5
+A
+B
+A
+B
+D
  */
 
 public class Main {
-    public int solution(int[] arr, int n) {
-        int answer = 0;
-        int max = Integer.MIN_VALUE;
+    public String[] solution(int[] arr, int[] arr2, int n) {
+        String answer[] = new String[n];
         
         for (int i = 0; i < n; i++) {
-            if (max < arr[i]) {
-                answer++;
-                max = arr[i];
+            if (arr[i] == 1 && arr2[i] == 3) {
+                answer[i] = "A";
+            }
+            else if (arr[i] == 2 && arr2[i] == 1) {
+                answer[i] = "A";
+            }
+            else if (arr[i] == 3 && arr2[i] == 2) {
+                answer[i] = "A";
+            }
+            else if (arr[i] == arr2[i]) {
+                answer[i] = "D";
+            }
+            else {
+                answer[i] = "B";
             }
         }
+
 
        return answer;
     }
@@ -31,11 +43,17 @@ public class Main {
         Scanner in=new Scanner(System.in);
         int n = in.nextInt();
         int arr[] = new int[n];
+        int arr2[] = new int[n];
         for (int i = 0; i < n; i++) {
             arr[i] = in.nextInt();
         }
+        for (int i = 0; i < n; i++) {
+            arr2[i] = in.nextInt();
+        }
 
-        System.out.println(T.solution(arr, n));
+        for (String x : T.solution(arr, arr2, n)) {
+            System.out.println(x);
+        }
 
         return ;
     }
