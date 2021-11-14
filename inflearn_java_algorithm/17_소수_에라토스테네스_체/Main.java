@@ -16,7 +16,7 @@ public class Main {
         arr[1] = 1;
         
         for (int i = 2; i <= n/2; i++) {
-            for (int j = i*2; j <= n; j=j+i) {
+            for (int j = i; j <= n; j=j+i) {
                 arr[j] = 1;
             }
         }
