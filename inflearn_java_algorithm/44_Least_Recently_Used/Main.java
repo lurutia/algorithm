@@ -48,13 +48,3 @@ public class Main {
         return ;
     }
 }
-
-class Node {
-    int seq;
-    int point;
-    
-    public Node(int seq, int point) {
-        this.seq = seq;
-        this.point = point;
-    }
-}
