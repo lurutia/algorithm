@@ -1,22 +1,44 @@
 package condition;
 
-import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class Baekjoon_2884 {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
-        int h = s.nextInt();
-        int m = s.nextInt();
-        int cookMinute = s.nextInt();
+        int a = s.nextInt();
+        int b = s.nextInt();
+        int c = s.nextInt();
 
-        solution(h, m, cookMinute);
+        int[] arr = new int[]{a, b, c};
+
+        solution(arr);
     }
 
-    private static void solution(int h, int m, int cookMinute) {
-        LocalDateTime t1 = LocalDateTime.of(2024, 1, 1, h, m, 0);
-        LocalDateTime t2 = t1.plusMinutes(cookMinute);
+    private static void solution(int[] arr) {
+        int result = 0;
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < arr.length; i++) {
+            if (max < arr[i]) {
+                max = arr[i];
+            }
+            int cnt = 0;
+            for (int j = 0; j < arr.length; j++) {
+                if (arr[i] == arr[j]) {
+                    cnt++;
+                }
+            }
+            if (cnt == 3) {
+                result = 10000 + (arr[i] * 1000);
+                break;
+            } else if (cnt == 2) {
+                result = 1000 + (arr[i] * 100);
+                break;
+            }
+        }
+        if (result == 0) {
+            result = max * 100;
+        }
 
-        System.out.println(t2.getHour() + " " + t2.getMinute());
+        System.out.println(result);
     }
 }
